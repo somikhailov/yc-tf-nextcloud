@@ -22,12 +22,18 @@ resource "yandex_compute_instance" "vm" {
   metadata = {
     ssh-keys = "ubuntu:${file(var.ssh_pub)}"
   }
-}
 
-resource "yandex_vpc_network" "net-1" {}
+  connection {
+    type        = "ssh"
+    user        = "ubuntu"
+    agent       = false
+    private_key = file(var.ssh_key)
+    host        = self.network_interface.0.nat_ip_address
+  }
 
-resource "yandex_vpc_subnet" "subnet-1" {
-  v4_cidr_blocks = ["10.2.0.0/16"]
-  zone           = var.yc_zone
-  network_id     = yandex_vpc_network.net-1.id
+  provisioner "remote-exec" {
+    inline = [
+      "echo 'instance up'",
+    ]
+  }
 }

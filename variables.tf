@@ -13,3 +13,7 @@ variable "yc_folder_id" {
 variable "ssh_pub" {
   type = string
 }
+
+variable "ssh_key" {
+  type = string
+}

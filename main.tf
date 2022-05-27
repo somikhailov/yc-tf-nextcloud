@@ -3,4 +3,5 @@ module "yc-instance" {
 
   yc_zone = "ru-central1-a"
   ssh_pub = var.ssh_pub
+  ssh_key = var.ssh_key
 }
