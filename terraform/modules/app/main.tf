@@ -1,5 +1,5 @@
 resource "yandex_compute_instance" "vm" {
-  name        = "vm"
+  name        = "app"
   platform_id = "standard-v1"
   zone        = var.yc_zone
 
