@@ -9,3 +9,7 @@ variable "ssh_pub" {
 variable "ssh_key" {
   type = string
 }
+
+variable "dns_zone" {
+  type = string
+}
