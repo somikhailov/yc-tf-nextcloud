@@ -1,3 +1,20 @@
 ---
 # tasks file for ansible/roles/nginx_install
-- include_tasks: "{{ ansible_os_family }}.yml"
+- name: create dicrectory docker-compose
+  file:
+    path: docker-compose
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: copy docker-compose
+  template:
+    src: docker-compose.yml
+    dest: docker-compose/docker-compose.yml
+    owner: root
+    group: root
+    mode: 0775
+
+- name: start docker-compose
+  shell: "docker-compose -f docker-compose/docker-compose.yml up -d"

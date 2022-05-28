@@ -1,6 +1,0 @@
-- name: install packages
-  apt:
-    update_cache: yes
-    name: nginx
-    state: present
-  notify: start nginx
