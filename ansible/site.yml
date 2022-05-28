@@ -1,0 +1,7 @@
+---
+- name: NGINX | Install and configure NGINX
+  hosts: app
+  become: true
+  
+  roles:
+    - nginx
