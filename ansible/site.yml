@@ -1,7 +1,8 @@
 ---
-- name: NGINX | Install and configure NGINX
+- name: Nextcloud
   hosts: app
   become: true
-  
+  vars:
+    domain_name: nextcloud.somikhailov.fun
   roles:
     - nginx
